@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur Javascript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <!-- <button id="toggle">Start</button> -->
+
+</body>
+<script>
+    const sayDate = function(str){
+        console.log(str, Date.now());
+    }
+
+    // const intervalId = setInterval(sayDate, 1000, "hi")
+    // clearInterval(intervalId)
+       
+
+     // Declare intervalId in a scope accessible to the event handler
+        // let intervalId = null;
+
+        // // Single event listener for both buttons, using one if–else block:
+        // document.addEventListener('click', function(e) {
+        //     if (e.target.id === 'start') {
+
+        //         // If "Start" was clicked, begin the interval
+        //         intervalId = setInterval(sayDate, 1000, "hi");
+        //         console.log("STARTED");
+
+        //     } else if (e.target.id === 'stop') {
+
+        //         // If "Stop" was clicked, clear the interval
+        //         clearInterval(intervalId);
+        //         intervalId = null;
+        //         console.log("STOPPED");
+        //     }
+        // });
+
+// PROBLEM in the above code is : Every time you click Start, a new setInterval is created without checking if one already exists, so:
+// If you click "Start" multiple times, multiple intervals run in parallel.
+// When you click "Stop", only the last interval ID gets cleared — the rest keep running.
+
+// The Fix:
+// We need to ensure that: A new interval only starts if none is already running (i.e., intervalId === null).
+    
+     let intervalId = null;
+
+        document.addEventListener('click', function(e) {
+            if (e.target.id === 'start' || e.target.id === 'stop') {
+                if (e.target.id === 'start' && intervalId === null) {
+                    intervalId = setInterval(sayDate, 1000, "hi");
+                    console.log("STARTED");
+                } else if (e.target.id === 'stop' && intervalId !== null) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                    console.log("STOPPED");
+                }
+            }
+        });
+    
+
+
+//USING TOGGLE BUTTON
+    //  let intervalId = null;
+
+    //     document.querySelector('#toggle').addEventListener('click', function () {
+    //         const button = this;
+
+    //         if (intervalId === null) {
+    //             intervalId = setInterval(sayDate, 1000, "hi");
+    //             button.textContent = "Stop";
+    //             console.log("STARTED");
+    //         } else {
+    //             clearInterval(intervalId);
+    //             intervalId = null;
+    //             button.textContent = "Start";
+    //             console.log("STOPPED");
+    //         }
+    //     });
+    
+
+</script>
+</html>
