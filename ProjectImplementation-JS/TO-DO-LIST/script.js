@@ -7,6 +7,8 @@
 //        deleteTask(newTask)
 
 // }
+//BUG: An empty task (just a Delete button without text) is being added to the list.
+//This happens because you aren't checking whether the input field has any text before creating a task.
 
 function addTask() {
     const input = document.getElementById('inputTask');
