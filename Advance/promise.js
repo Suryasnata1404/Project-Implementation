@@ -6,7 +6,6 @@ let videoUpload = new Promise((resolve , reject) => {
     else{
         reject("sorry , poor network connection");
     }
-
 })
 
 videoUpload.then((message) => {
