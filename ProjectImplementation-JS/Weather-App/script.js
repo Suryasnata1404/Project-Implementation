@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
    const cityInput = document.getElementById('city-input');
    const getWeatherBtn = document.getElementById('get-weather-btn');
    const weatherInfo = document.getElementById('weather-info');
-   const cityNameDisplay = document.getElementById('City-name');
+   const cityNameDisplay = document.getElementById('city-name');
    const temperature = document.getElementById('temperature');
    const description = document.getElementById('description');
    const errorMsg = document.getElementById('error-message');
 
-   const API_KEY = "2506f8d75114ba1e1a541e461858b94a" ; //env variables
+   const API_KEY = "2506f8d........" ; //env variables write your own API key here
 
         getWeatherBtn.addEventListener('click' , async () => {
             const city = cityInput.value.trim()
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
          console.log(data);
          const {name, main, weather} = data;
          cityNameDisplay.textContent = name ;
-         temperature.textContent = `Temperature : ${main.temp}`;
+         temperature.textContent = `Temperature : ${main.temp}°C`;
          description.textContent = `Weather : ${weather[0].description}`;
 
          //unlock the display
